@@ -29,4 +29,21 @@ class TodoController extends Controller
 
         return redirect()->back()->with('success', 'Todo added successfully!');
     }
+
+
+    public function allTodo()
+    {
+        // Get all todos from the database
+        $todos = Todo::paginate(10);
+
+        // Pass todos to the view
+        return view('all_todo', compact('todos'));
+    }
+
+
+
+
+
+
+
 }
