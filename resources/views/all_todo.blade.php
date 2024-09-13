@@ -26,7 +26,7 @@
                         <td>{{ $todo->title }}</td>
                         <td>{!! $todo->details !!}</td> 
                         <td>
-                            <a href="" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{ route('todos.edit', $todo->id) }}" class="btn btn-warning btn-sm">Edit</a>
                             
                                 <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                         
