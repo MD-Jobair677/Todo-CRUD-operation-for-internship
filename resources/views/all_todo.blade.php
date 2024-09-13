@@ -28,8 +28,12 @@
                         <td>
                             <a href="{{ route('todos.edit', $todo->id) }}" class="btn btn-warning btn-sm">Edit</a>
                             
-                                <button type="submit" class="btn btn-danger btn-sm">Delete</button>
-                        
+                                
+                                <a href="#" class="btn btn-danger btn-sm dltbtn">Delete</a>
+                                <form action="{{ Route('todo.delete',$todo->id)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                </form>
                         </td>
                     </tr>
                 @endforeach
@@ -43,3 +47,32 @@
 </div>
 </div>
 @endsection
+
+@push("customjs")
+<script>
+    $(document).ready(function(){
+        $('.dltbtn').click(function(e){
+            e.preventDefault();
+            
+  Swal.fire({
+  title: "Are you sure?",
+  text: "You won't be able to revert this!",
+  icon: "warning",
+  showCancelButton: true,
+  confirmButtonColor: "#3085d6",
+  cancelButtonColor: "#d33",
+  confirmButtonText: "Yes, delete it!"
+}).then((result) => {
+  if (result.isConfirmed) {
+
+    $(this).next('form').submit().prev
+    
+  }
+});
+
+        })
+    })
+
+</script>
+
+@endpush

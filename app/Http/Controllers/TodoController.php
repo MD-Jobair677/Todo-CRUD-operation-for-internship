@@ -7,11 +7,14 @@ use Illuminate\Http\Request;
 
 class TodoController extends Controller
 {
+
+
+    // create to do
     function CreateToo (){
         return view("create");
     }
 
-
+// store data in database
     public function storeTodo(Request $request)
     {
         $request->validate([
@@ -46,7 +49,7 @@ class TodoController extends Controller
         return view('edite_todo', compact('todo'));
     }
 
-
+//update todo
 function todoUpdate(Request $request, $id){
     $request->validate([
         'title' => 'required|string|max:30',
@@ -65,6 +68,12 @@ function todoUpdate(Request $request, $id){
       return redirect()->back()->with('success', 'Todo update successfully!');
     
 }
+
+function todoDelete($id){
+    Todo::find($id)->delete();
+   
+    return back();
+ }
 
 
 }

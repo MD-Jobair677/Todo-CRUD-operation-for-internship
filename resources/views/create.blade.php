@@ -46,7 +46,7 @@
                         @error('details')
                         <p class="alert alert-danger">{{$message }}</p>
                         @enderror 
-                        <button type="submit" class="btn btn-success">Add Todo</button>
+                        <button type="submit" class="btn btn-success my-2">Add Todo</button>
                     </form>
                     <a href="{{route("all.todos")}}" class="btn btn-warning my-2">All Todo</a>
                 </div>
